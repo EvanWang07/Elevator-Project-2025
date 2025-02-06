@@ -32,6 +32,10 @@ public final class Constants {
   public static final class Elevator {
     /* Elevator Mechanism Details */
     public static final double elevatorGearRatio = 6;
+    public static final double elevatorGearRadius = Units.inchesToMeters(1.757 / 2);
+    public static final double elevatorStartingHeightInRotations = 0; // Do NOT consider gear ratio here
+    public static final double minimumElevatorHeightInRotations = 0; // Do NOT consider gear ratio here
+    public static final double maxElevatorHeightInRotations = 3.545; // Do NOT consider gear ratio here
 
     /* Elevator Motor Configs */
     public static final int elevatorMotorOneID = 9;
@@ -39,13 +43,19 @@ public final class Constants {
     public static final InvertedValue elevatorMotorInvert = InvertedValue.CounterClockwise_Positive;
     public static final NeutralModeValue elevatorMotorNeutralMode = NeutralModeValue.Brake;
 
-    /* Elevator Bounds */
-    public static final double elevatorLowerBound = Units.rotationsToDegrees(0.1 * elevatorGearRatio);; // in degrees - how many degrees of spin away from the lower bound should the motor brake at?
-    public static final double elevatorUpperBound = Units.rotationsToDegrees(3.5 * elevatorGearRatio); // in degrees - ditto, but upper bound
+    /* Elevator Bounds and Tolerance */
+    public static final double elevatorMotorBoundsToleranceInRotations = 0.05;
+    public static final double elevatorLowerBound = Units.rotationsToDegrees((minimumElevatorHeightInRotations + elevatorMotorBoundsToleranceInRotations) * elevatorGearRatio); // Angular position of the lower bound of elevator downward movement
+    public static final double elevatorUpperBound = Units.rotationsToDegrees((maxElevatorHeightInRotations - elevatorMotorBoundsToleranceInRotations) * elevatorGearRatio); // Angular position of the upper bound of elevator upper movement
 
-    // approx travel in rotations - 0 -> 3.545
+    /* Target Elevator Heights (Robot Reaches L1, L2, and L3) */
+    public static final double levelOneHeight = Units.inchesToMeters(43); // TODO: Get a more precise value
+    public static final double levelTwoHeight = Units.inchesToMeters(28); // TODO: Get a more precise value
+    public static final double levelThreeHeight = Units.inchesToMeters(11); // TODO: Get a more precise value
 
-    // 1.757 in Elevator gear diameter
+    public static final double levelOneHeightInRotations = Units.radiansToRotations(levelOneHeight / elevatorGearRadius);
+    public static final double levelTwoHeightInRotations = Units.radiansToRotations(levelTwoHeight / elevatorGearRadius);
+    public static final double levelThreeHeightInRotations = Units.radiansToRotations(levelThreeHeight / elevatorGearRadius);
   }
 
   public static final class MailboxConstants {
