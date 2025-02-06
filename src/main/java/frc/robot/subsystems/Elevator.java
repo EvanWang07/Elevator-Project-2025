@@ -20,8 +20,8 @@ public class Elevator extends SubsystemBase {
 
     public void setElevatorMotorSpeed(double newSpeed) {
         if (checkElevatorMovement(newSpeed)) {
-            elevatorMotorOne.set(newSpeed);
-            elevatorMotorTwo.set(newSpeed);
+            elevatorMotorOne.setVoltage(2 * newSpeed);
+            elevatorMotorTwo.setVoltage(2 * newSpeed);
         } else {
             brakeElevator();
         }

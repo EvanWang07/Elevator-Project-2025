@@ -36,12 +36,12 @@ public final class Constants {
     /* Elevator Motor Configs */
     public static final int elevatorMotorOneID = 9;
     public static final int elevatorMotorTwoID = 10;
-    public static final InvertedValue elevatorMotorInvert = InvertedValue.Clockwise_Positive;
+    public static final InvertedValue elevatorMotorInvert = InvertedValue.CounterClockwise_Positive;
     public static final NeutralModeValue elevatorMotorNeutralMode = NeutralModeValue.Brake;
 
     /* Elevator Bounds */
     public static final double elevatorLowerBound = Units.rotationsToDegrees(0.1 * elevatorGearRatio);; // in degrees - how many degrees of spin away from the lower bound should the motor brake at?
-    public static final double elevatorUpperBound = Units.rotationsToDegrees(3.445 * elevatorGearRatio); // in degrees - ditto, but upper bound
+    public static final double elevatorUpperBound = Units.rotationsToDegrees(3.5 * elevatorGearRatio); // in degrees - ditto, but upper bound
 
     // approx travel in rotations - 0 -> 3.545
 

@@ -22,11 +22,12 @@ public class Intake extends Command {
     public void execute() {
         m_mailboxSubsystem.setMailboxSpeed();
 
-        SmartDashboard.putBoolean("Coral in Intake: ", m_mailboxSubsystem.coralIsDetected());
+        // SmartDashboard.putBoolean("Coral in Intake: ", m_mailboxSubsystem.coralIsDetected());
     }
 
     @Override
     public boolean isFinished() {
+        /* 
         if (directionIsIntake) {
             if (m_mailboxSubsystem.coralIsDetected()) {
                 return true;
@@ -36,14 +37,16 @@ public class Intake extends Command {
         } else {
             if (!m_mailboxSubsystem.coralIsDetected()) { 
                 Commands.waitSeconds(3); 
-                /* As the coral is being spat out, the sensor will stop detecting the coral
-                 * This wait ensures the motors will still spin as the coral leaves
-                 */
+                As the coral is being spat out, the sensor will stop detecting the coral
+                This wait ensures the motors will still spin as the coral leaves
+                
                 return true;
             } else {
                 return false;
             }
         }
+        */
+        return false;
     }
 
     @Override

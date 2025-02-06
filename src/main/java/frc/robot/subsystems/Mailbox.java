@@ -9,11 +9,11 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class Mailbox extends SubsystemBase {
     private final SparkMax intakeNeoVortex;
-    private final DigitalInput coralSensor;
+    // private final DigitalInput coralSensor;
 
     public Mailbox() {
         intakeNeoVortex = new SparkMax(MailboxConstants.MailboxMotorID, MotorType.kBrushless);
-        coralSensor = new DigitalInput(MailboxConstants.beamBreakerChannel);
+        // coralSensor = new DigitalInput(MailboxConstants.beamBreakerChannel);
     }
 
     public void setMailboxSpeed() {
@@ -24,7 +24,9 @@ public class Mailbox extends SubsystemBase {
         intakeNeoVortex.set(0);
     }
 
+    /* 
     public boolean coralIsDetected() {
         return !coralSensor.get();
     }
+    */
 }
