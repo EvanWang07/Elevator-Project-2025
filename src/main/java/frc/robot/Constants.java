@@ -58,7 +58,7 @@ public final class Constants {
     public static final double levelThreeHeightInRotations = Units.radiansToRotations(levelThreeHeight / elevatorGearRadius);
 
     /* Elevator Feedforward & PID Tuning Constants */
-    public static final double kG = 0; // Offset feedforward constant for gravity (currently a placeholder value)
+    public static final double gravitationalOffsetVoltage = 0; // Offset feedforward voltage for gravity (currently a placeholder value)
     public static final double kV = 0; // Offset feedforward constant for kinetic friction (currently a placeholder value)
     public static final double kA = 0; // Offset feedforward constant for outside forces (currently a placeholder value)
     public static final double kP = 0; // Proportional feedback constant (currently a placeholder value)
