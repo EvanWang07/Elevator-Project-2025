@@ -72,6 +72,6 @@ public final class Constants {
     public static final int MailboxMotorMaxVoltage = 6;
 
     /* Beam Breaker Configs */
-    public static final int beamBreakerChannel = 102; // Placeholder
+    public static final int beamBreakerChannel = 0; // Placeholder
   }
 }
