@@ -22,8 +22,12 @@ public class RobotContainer {
   private final int elevatorAxis = XboxController.Axis.kLeftY.value;
 
   /* Weapon Buttons */
-  private final JoystickButton intakeCoral = new JoystickButton(weapons, XboxController.Button.kA.value);
-  private final JoystickButton scoreCoral = new JoystickButton(weapons, XboxController.Button.kB.value);
+  private final JoystickButton intakeCoral = new JoystickButton(weapons, XboxController.Button.kLeftBumper.value);
+  private final JoystickButton scoreCoral = new JoystickButton(weapons, XboxController.Button.kRightBumper.value);
+  private final JoystickButton floorElevator = new JoystickButton(weapons, XboxController.Button.kA.value);
+  private final JoystickButton levelOneElevator = new JoystickButton(weapons, XboxController.Button.kB.value);
+  private final JoystickButton levelTwoElevator = new JoystickButton(weapons, XboxController.Button.kX.value);
+  private final JoystickButton levelThreeElevator = new JoystickButton(weapons, XboxController.Button.kY.value);
 
   /* Subsystems */
   private final Elevator e_Elevator = new Elevator();
@@ -48,6 +52,11 @@ public class RobotContainer {
     /* Weapon Buttons */
     intakeCoral.whileTrue(new Intake(m_Mailbox, true));
     scoreCoral.whileTrue(new Intake(m_Mailbox, false)); // Could possibly use intakeCoral and have directionIsIntake be true
+
+    floorElevator.whileTrue(new AutoElevator(e_Elevator, Constants.Elevator.elevatorLowerBound));
+    levelOneElevator.whileTrue(new AutoElevator(e_Elevator, Constants.Elevator.levelOneHeightInRotations));
+    levelTwoElevator.whileTrue(new AutoElevator(e_Elevator, Constants.Elevator.levelTwoHeightInRotations));
+    levelThreeElevator.whileTrue(new AutoElevator(e_Elevator, Constants.Elevator.levelThreeHeightInRotations));
   }
 
   public Command getAutonomousCommand() {
