@@ -20,9 +20,9 @@ public class Elevator extends SubsystemBase {
 
     public void setElevatorMotorSpeed(double newSpeed) {
         if (checkElevatorMovement(newSpeed)) {
-            elevatorMotorOne.setVoltage(2 * newSpeed);
-            elevatorMotorTwo.setVoltage(2 * newSpeed);
-        } else {
+            elevatorMotorOne.setVoltage(2 * newSpeed + Constants.Elevator.gravitationalOffsetVoltage);
+            elevatorMotorTwo.setVoltage(2 * newSpeed + Constants.Elevator.gravitationalOffsetVoltage);
+        } else { 
             brakeElevator();
         }
     }
@@ -32,13 +32,13 @@ public class Elevator extends SubsystemBase {
         elevatorMotorTwo.setVoltage(0);
     }
 
-    public void setElevatorPosition(double newPosition) { // newPosition is in degrees
-        elevatorMotorOne.getConfigurator().setPosition(Units.degreesToRotations(newPosition));
+    public void setElevatorPosition(double newPosition) { // newPosition is in rotations
+        elevatorMotorOne.getConfigurator().setPosition(newPosition);
     }
 
     public double getElevatorPosition() {
-        double motorOnePosition = Units.rotationsToDegrees(elevatorMotorOne.getPosition().getValueAsDouble());
-        double motorTwoPosition = Units.rotationsToDegrees(elevatorMotorTwo.getPosition().getValueAsDouble());
+        double motorOnePosition = elevatorMotorOne.getPosition().getValueAsDouble();
+        double motorTwoPosition = elevatorMotorTwo.getPosition().getValueAsDouble();
         return (motorOnePosition + motorTwoPosition) / 2;
     }
 
