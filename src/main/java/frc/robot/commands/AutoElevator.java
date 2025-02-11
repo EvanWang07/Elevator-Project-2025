@@ -30,7 +30,7 @@ public class AutoElevator extends Command {
         /* for debugging/testing */
         System.out.println(MathUtil.clamp((elevatorPIDController.calculate(periodicError, setPoint)), Constants.Elevator.elevatorPIDSpeedFloor, Constants.Elevator.elevatorPIDSpeedCap));
     
-        /* do not enable yet */
+        /* do not enable yet */ 
         // e_Elevator.setElevatorMotorSpeed(MathUtil.clamp((elevatorPIDController.calculate(periodicError, setPoint)), Constants.Elevator.elevatorPIDSpeedFloor, Constants.Elevator.elevatorPIDSpeedCap) + Constants.Elevator.gravitationalOffsetVoltage);
     }
 
